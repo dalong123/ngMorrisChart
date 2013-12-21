@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+    <style type="text/css">
+        .container-fluid {
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body ng-controller="defaultController">
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xs-4"><pre>&lt;div morris-donut data="donutAData"&gt;&lt;/div&gt;</pre></div>
+        <div class="col-xs-4"><pre>&lt;morris-donut data="donutBData" colors="donutBColors" formatter="donutFormatter"&gt;&lt;/morris-donut&gt;</pre></div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div morris-donut data="donutAData"></div>
+        </div>
+        <div class="col-xs-4">
+
+            <morris-donut data="donutBData" colors="donutBColors" formatter="donutFormatter"></morris-donut>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-default btn-block" ng-click="setDonutData()">Update First Chart</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4"><pre>&lt;div morris-chart type="line" data="lineAData" options="lineAOptions"&gt;&lt;/div&gt;</pre></div>
+        <div class="col-xs-4"><pre>&lt;morris-chart type="line" data="lineBData" options="lineBOptions"&gt;&lt;/morris-chart&gt;</pre></div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div morris-chart type="line" data="lineAData" options="lineAOptions"></div>
+        </div>
+        <div class="col-xs-4">
+            <morris-chart type="line" data="lineBData" options="lineBOptions"></morris-chart>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-default btn-block" ng-click="setLineData()">Update First Chart</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4"><pre>&lt;div morris-chart type="area" data="areaAData" options="areaAOptions"&gt;&lt;/div&gt;</pre></div>
+        <div class="col-xs-4"><pre>&lt;morris-chart type="area" data="areaBData" options="areaBOptions"&gt;&lt;/morris-chart&gt;</pre></div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div morris-chart type="area" data="areaAData" options="areaAOptions"></div>
+        </div>
+        <div class="col-xs-4">
+            <morris-chart type="area" data="areaBData" options="areaBOptions"></morris-chart>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-default btn-block" ng-click="setAreaData()">Update First Chart</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4"><pre>&lt;div morris-chart type="bar" data="barAData" options="barAOptions"&gt;&lt;/div&gt;</pre></div>
+        <div class="col-xs-4"><pre>&lt;morris-chart type="bar" data="barBData" options="barBOptions"&gt;&lt;/morris-chart&gt;</pre></div>
+        <div class="col-xs-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div morris-chart type="bar" data="barAData" options="barAOptions"></div>
+        </div>
+        <div class="col-xs-4">
+            <morris-chart type="bar" data="barBData" options="barBOptions"></morris-chart>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-default btn-block" ng-click="setBarData()">Update First Chart</button>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/defaultController.js"></script>
+<script type="text/javascript" src="js/ngMorrisChart.js"></script>
+</body>
+</html>
