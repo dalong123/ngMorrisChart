@@ -2,35 +2,93 @@
 
 ngMorrisChart is a AngularJS module that exposes MorrisJS as a collection of easy to use directives.
 
+MorrisJS documentation can be found at <http://www.oesmith.co.uk/morris.js/>
 
-##License
+A working example of ngMorrisChart can be found at <http://dongood.github.io/ngMorrisChart/default.html>
 
-Simplified BSD License
+##Using ngMorrisChart
 
-MorrisJS
-Copyright (c) 2013, Olly Smith
-All rights reserved.
+Add a reference to JQuery, Angular, and MorrisJS (order is important)
 
-ngMorrisChart
-Copyright (c) 2013, Don Good
-All rights reserved.
+```html
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
+<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+```
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+Add a refernce to ngMorrisChart.js (should occur after Angular)
 
-1. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation
-and/or other materials provided with the distribution.
+```html
+<script type="text/javascript" src="js/ngMorrisChart.js"></script>
+````
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+##Creating Charts
+
+ngMorrisChart exposes two directives.
+
+###morrisDonut
+The morrisDonut directive uses a required *data* and optional *colors* arguements.
+
+**Markup**
+
+```html
+<div morris-donut data="donutData" colors="donutColors"></div>
+```
+
+**Controller**
+
+```javascript
+$scope.donutData = [
+    {label: "Download Sales", value: 12},
+    {label: "In-Store Sales", value: 30},
+    {label: "Mail-Order Sales", value: 20}
+];
+$scope.donutColors = ['blue', 'yellow', 'green'];
+```
+
+You can update *data* programmaticly and the chart will automatically refresh.
+
+The chart fills it's container and will automatically resize itself should the browser window change.
+
+###morrisChart
+The morrisChart directive requires the *type*, *data*, and *options* arguements.
+
+Set *type* to line, area, or bar.
+
+The *options* arguement should be set to a JavaScript object as defined by <http://www.oesmith.co.uk/morris.js/>.
+
+* Do not set the *element* option, this is handled for you automatically by the directive.
+
+The *data* argument must follow the format as shown in the MorrisJS documentation.
+
+**Markup**
+
+```html
+<div morris-chart type="line" data="lineData" options="lineOptions"></div>
+```
+
+**Controller**
+
+```javascript
+$scope.lineData = [
+    { y: '2006', a: 100, b: 90 },
+    { y: '2007', a: 75,  b: 65 },
+    { y: '2008', a: 50,  b: 40 },
+    { y: '2009', a: 75,  b: 65 },
+    { y: '2010', a: 50,  b: 40 },
+    { y: '2011', a: 75,  b: 65 },
+    { y: '2012', a: 100, b: 90 }
+];
+$scope.lineOptions = {
+    xkey: 'y',
+    ykeys: ['a', 'b'],
+    labels: ['Series A', 'Series B'],
+    hideHover: true
+}
+```
+
+You can update *data* programmaticly and the chart will automatically refresh.
+
+The chart fills it's container and will automatically resize itself should the browser window change.
